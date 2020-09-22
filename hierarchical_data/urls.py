@@ -16,9 +16,10 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-from homepage.views import index
+from homepage.views import index, addfile
 
 urlpatterns = [
     path('', index, name='homepage'),
+    path('addfile/', addfile, name='addfileview'),
     path('admin/', admin.site.urls),
 ]

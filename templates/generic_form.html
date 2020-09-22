@@ -22,32 +22,15 @@
 ></script>
 <div class="container">
   <br />
-  {% comment %}
   <div align="right">
-    <a href="/login/" class="btn btn-primary">Login</a>&nbsp;<a
-      href="/logout/"
-      class="btn btn-primary"
-      >Logout</a
-    >
+    <a class="btn btn-primary" href="/" role="button">Home</a>
   </div>
-  {% endcomment %} {% if request.user.is_authenticated %}
-  <h4>You are logged in as, {{ request.user }}.</h4>
-  {% endif %}
-  <h2>Welcome to Your FileBox!</h2>
   <br />
-  <a href="/addfile/" class="btn btn-primary">ADD FILE</a>
+  <h2>Please fill out the form below.</h2>
   <br />
-  <br />
-  {% load mptt_tags %}
-  <ul>
-    {% recursetree tree %}
-    <li style="font-weight: bold; font-size: 16pt">
-      {{ node.name }} {% if not node.is_leaf_node %}
-      <ul class="children">
-        {{ children }}
-      </ul>
-      {% endif %}
-    </li>
-    {% endrecursetree %}
-  </ul>
+  <p style="color: red">{{ message }}</p>
+  <form action="" method="post">
+    {% csrf_token %} {{ form.as_p }}
+    <input class="btn btn-primary" type="submit" value="Submit!" />
+  </form>
 </div>
